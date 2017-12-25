@@ -1,3 +1,0 @@
-Criar banco com utf-8
-
-MySQL - utf8mb4_unicode_ci
