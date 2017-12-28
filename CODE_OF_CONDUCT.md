@@ -1,5 +1,5 @@
 ## Português
-# Convenço para o código de conduta do colaborador
+# Convenções para o código de conduta do colaborador do auto-crud
 
 ## Nosso penhor
 
