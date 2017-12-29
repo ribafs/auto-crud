@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'cadastro'; // Dica: auto-crud não foi aceito
+$db   = 'auto-crud'; // Dica: auto-crud não foi aceito
 $user = 'root';
 $pass = 'mysql';
 $sgbd = 'mysql';      // Opções: pgsql ou mysql

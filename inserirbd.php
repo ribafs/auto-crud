@@ -1,25 +1,9 @@
 <?php
 if(isset($_POST['enviar'])){
 
-    $num_campos = num_campos();
-	$campos = '';
-	$valores = '';
+    $inserirStr = inserirStr();
 
-    for($x=1;$x<$num_campos;$x++){
-        $campo = nome_campo($x);
-
-		// Este if gera o seguinte código para a variável $campos = "nome, email, data_nasc, cpf" (exemplo para clientes)
-		// E também para a variável $valores = ":nome, :email, :data_nasc, cpf"
-		if($x<$num_campos-1){
-            $campos .= "$campo,";
-            $valores .= ":$campo, ";
-		}else{
-            $campos .= "$campo";
-            $valores .= ":$campo";
-		}
-	}
-
-    $sql = "INSERT INTO $table ($campos) VALUES ($valores)";
+    $sql = "INSERT INTO $table $inserirStr";
     $sth = $pdo->prepare($sql);    
 
     for($x=1;$x<$num_campos;$x++){
