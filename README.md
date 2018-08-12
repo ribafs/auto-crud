@@ -1,8 +1,4 @@
-## Criador Automático de CRUDs
-
-# Dizendo não para o lado negro da força (MS) mudei para o GitLab. Manterei os arquivos aqui em respeito aos usuários e ao antigo GitHub mas estarei atualizando somente no GitLab daqui pra frente.
-https://gitlab.com/ribafs/auto-crud
-
+# Criador Automático de CRUDs
 
 #### Apenas indique o banco de dados e a tabela no conexao.php e ele cria seu CRUD com PDO, Bootstrap e Paginação, com suporte a MySQL e PostgreSQL garantidos e ainda outros via PDO.
 
