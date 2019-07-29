@@ -1,8 +1,5 @@
 # PHP Automatic CRUD
 
-## Em Português
-![](images/brasil.png) https://github.com/ribafs/auto-app/README-pt_BR.md
-
 Are only two classes, Connection() and Crud() with good methods and the basic files from CRUD. You will not have to type any field names and no lines of code. It will automatically generate the code of a CRUD.
 
 ## This project URL
