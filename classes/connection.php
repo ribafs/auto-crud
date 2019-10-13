@@ -3,7 +3,7 @@
 class Connection
 {
 	private $host  = 'localhost';
-	private $db    = 'testes';
+	private $db    = 'TEUBD';
 	private $user  = 'root';
 	private $pass  = 'root';
 	public  $sgbd  = 'mysql';
@@ -13,7 +13,6 @@ class Connection
 	public  $pdo;
 	public $regsPerPage = 10; // Registros por página
     public $linksPerPage = 15;
-    public $appName = 'PHP Automatic CRUD</a>';
 
     public function __construct(){
 
