@@ -5,9 +5,7 @@ CREATE TABLE `customers` (
   `birthday` date DEFAULT NULL,
   `security` char(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `customers2_fk` (`user_id`),
-  CONSTRAINT `customers2_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `customers` (`id`, `name`, `email`, `birthday`, `security`, `user_id`) VALUES
