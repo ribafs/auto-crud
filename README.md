@@ -1,74 +1,102 @@
-# PHP Automatic CRUD
+# Criador Automático de CRUDs
 
-Are only two classes, Connection() and Crud() with good methods and the basic files from CRUD. You will not have to type any field names and no lines of code. It will automatically generate the code of a CRUD.
+#### Apenas indique o banco de dados e a tabela no conexao.php e ele cria seu CRUD com PDO, Bootstrap e Paginação, com suporte a MySQL e PostgreSQL garantidos e ainda outros via PDO.
 
-## This project URL
+### Mais facilidades para esta versão
+Agora você pode apenas inserir o script.sql na pasta script e indicar no conexão que o auto-crud-pt irá criar o banco para ele e importar seu script
 
+### Em dois Idiomas
+Português - https://github.com/ribafs/auto-crud-pt
+
+Inglês - https://github.com/ribafs/auto-crud-en
+
+### Requisitos:
+- Apache2
+- PHP 5.5.9+
+- MySQL 5.5+ ou PostgreSQL 8+
+
+## Download
 https://github.com/ribafs/auto-crud
 
-## Requirements:
+## Instalação
+Descompacte o pacote baixado e copie o diretório auto-crud para seu diretório web (renomeie a vontade).
+Supondo que tenha mudado o nome para clientes.
 
-- PHP (Im using 7.2, but should also work in the 5.x)
-- All web server supported by PHP, including native
-- MySQL or PostgreSQL (with small adaptations also rotates in the others supported by the PDO)
-- Writing permission to the web server in the application folder (on Linux systems or similar)
-- For everything to work properly you need table to have the primary key called "id".
+## Instalando via composer
+- Criar um diretório via terminal
+- Acessar o diretório criado e executar:
 
-## Good Resources:
+composer require ribafs/auto-crud-pt
 
-- Simple OOP PHP
-- PHP with PDO
-- Pagination of results with bootpag
-- Integrated search
-- BootStrap 4
+## Configuração
 
-## Installation
+Edite o arquivo db_connnect.php e ajuste para as informações do seu banco de dados
+Lembre também de indicar a tabela a ser usada.
+Pode testar com os scripts existentes para mysql e para postgresql: clientes_my.sql e clientes_pg.sql na pasta scripts
 
-- Make download and uncompress in your web directory. 
-- Example: /var/www/html/auto-crud or c:\xampp\htdocs\auto-crud
-- Create a database, import script db.sql or use a existing database
-- Call by browser with - http://localhost/auto-crud
-- It will open the form for entering the data of the bank, as below:
+Chame em seu navegador com
+http://localhost/clientes
 
-![](assets/images/form.png)
+Ao abrir no navegador verá o grid com o CRUD como abaixo:
 
-- Enter the database info and click in Send.
-- Then you will already be in front of the CRUD, as the screen below
+<img src="imagens/grid.png">
 
-![](assets/images/crud.png)
+No grid acima verá a listagem dos registros existentes com paginação, edição, exclusão e adição de um novo registro.
 
-Now try and see anothers features.
+Para inserir um novo registro clique no botão à esquerda Novo Registro
 
-## Origin
+<img src="imagens/insert.png">
 
-This software started from the application "crud_phpoo" from repository:
+Para atualizar um dos registros clique no ícone Editar à esquerda e verá a tela:
 
-https://github.com/ribafs/aplicativos-php
+<img src="imagens/update.png">
 
-## To change table:
+Para remover um registro apenas clique no link Excluir à direita do Editar e confirme na tela:
 
-- You can manually edit the classes/connection.php
-- Or simply remove the classes/connection.php and call again - http://localhost/auto-app
+<img src="imagens/delete.png">
 
-## Automatic CRUD
+## Funcionamento
 
-Using this software I create another proejct and call auto-crud, which does this same magic but only for one tables.
+Após configurar o banco e a tabela e chamar pelo navegador ele trata cada um dos campos da tabela de forma particular usando para isso informações de metadados do SGBD.
 
-https://github.com/ribafs/auto-crud
+## Customizações
 
-## Credit
+O código com a paginação está no arquivo libs/ps_pagination.php.
 
-The basic pagination I used to create this application was found at the following site::
+## Releases
 
-https://www.kodingmadesimple.com/2017/01/simple-ajax-pagination-in-jquery-php-pdo-mysql.html
+- 1.0 - Versão inicial
+- 1.1 - Nesta versão os arquivos foram todos renomeados para nomes em português
 
-## License
+      - Melhorados e traduzidos os comentários
+      
+      - Simplificação do código removendo código desnecessário
+      
+      - Criadas duas funções para substituir trechos de código que se repetiam. Inseri seu include na conexao.php para facilitar
+      
+      - Pequena alteração no css do cabeçalho e do rodapé
+
+- 1.2 - Correçes devido aos ajustes da 1.1
+
+- 1.3 - Separados os arquivos principais inserir, atualizar e excluir em dois. Agora o inserir é inserir e inserirdb.
+
+- 1.4 - Agora ele cria o banco para você e importa seu script, basta indicar onde ele está no conexao.php
+
+- 1.5 - Otimização das funções. Passando mais informações para elas e reduzindo a quantidade de parâmetros. Assim o código fica mais simples e mais fácil de entender. 
+Estes são os objetivos principais: facilitar a vida do programador/usuário e simplificar/otimizar o código.
+
+- 1.6 - Ainda continuando a otimização do código. Melhorando as funções e com isso tambéma a quantidade de linhas foi reduzida.
+
+- 1.7 - Mais ajustes para o código. Otimizando para separar melhor e deixar fácil para converter para OO.
+
+## AVISO
+O principal objetivo deste pequeno software é o de facilitar a vida de quem não programa e nem está pensando em aprender e também o de facilitar para quem programa mas apenas quer criar algo rápido, como uma agenda ou um cadastro simples.
+
+## Licença
 
 MIT
 
-## Suggestions are will be very welcome:
+Agradecimento ao site
+https://www.codeofaninja.com/2011/06/paginating-your-data-with-ajax-and.html
 
-- Issues
-- Forks
-- Pull Requests
-
+Sem ele a paginação não seria tão elegante e eficiente.

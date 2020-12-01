@@ -1,43 +1,53 @@
 <?php
+require_once('./footer.php');
+require_once('./classes/connection.php');
 require_once('./classes/crud.php');
-$table = $_GET['table'];
-$crud = new Crud($pdo,$table);
+$crud = new Crud($db);
 
-$id=$_GET['id'];
+// Receebr o id via GET do busca_resultados.php ou via POST deste arquivo
+if(isset($_GET['id'])){
+	$id=$_GET['id'];
+}else{
+	$id=$_POST['id'];
+}
 
-$sth = $crud->pdo->prepare("SELECT {$crud->fields()} from $crud->table WHERE id = :id");
-$sth->bindValue(':id', $id, PDO::PARAM_STR);
-$sth->execute();
-
-$reg = $sth->fetch(PDO::FETCH_ASSOC);
-
-require_once('./header.php');
+// Mostrar nome da Tabela
+print '<h3 align="center">'.ucfirst($crud->table).'</h3>';
 ?>
-<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading text-center"><h3><b><?=$conn->appName?> <br>Update</h3></b></div>
-        <div class="row">
+
+<!-- Mostrar form de atualização -->
+<div class="container" align="center">
+    <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <form method="post" action="">
+            <form method="post" action="update.php">
                 <table class="table table-bordered table-responsive table-hover">
-                <?php
-                    print $crud->fieldsUpdate($reg);
-                ?>
-                <input name="id" type="hidden" value="<?=$id?>">
-                <tr><td></td><td><input name="send" class="btn btn-primary" type="submit" value="Update">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input name="send" class="btn btn-warning" type="button" onclick="location='index.php?table=<?=$table?>'" value="Back"></td></tr>
-                </table>
-            </form>
-            <?php require_once('footer.php'); ?>
+
+<?php
+    $sth = $crud->pdo->prepare("SELECT * from ".$crud->table." WHERE id = :id");
+    $sth->bindValue(':id', $id, PDO::PARAM_STR); // No select e no delete basta um único bindValue
+    $sth->execute();
+
+    $reg = $sth->fetch(PDO::FETCH_OBJ);
+          
+    for($x=0;$x<$crud->numFields();$x++){
+        $field = $crud-fieldName($x);
+?>
+        <tr><td><b><?=ucfirst($field)?></td><td><input type="text" name="<?=$field?>" value="<?=$reg->$field?>"></td></tr>
+<?php
+}
+?>
+            <input name="id" type="hidden" value="<?=$id?>">
+            <tr><td></td><td><input name="send" class="btn btn-primary" type="submit" value="Editar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="send" class="btn btn-warning" type="button" onclick="location='index.php'" value="Voltar"></td></tr>
+            </table>
+        </form>
         </div>
     <div>
 </div>
 
 <?php
-
-if(isset($_POST['send'])){
-   $crud->update();
-}
+require_once('./footer.php');
+require_once('./update_db.php');
 ?>
 
