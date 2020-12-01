@@ -1,3 +1,9 @@
+# Projeto abandonado
+
+Em favor do projeto ribafs/php-crud-generator, que continuará de onde este parou, corrigindo problemas e adicionando novos recursos.
+
+https://github.com/ribafs/php-crud-generator
+
 # Criador Automático de CRUDs
 
 #### Apenas indique o banco de dados e a tabela no conexao.php e ele cria seu CRUD com PDO, Bootstrap e Paginação, com suporte a MySQL e PostgreSQL garantidos e ainda outros via PDO.
