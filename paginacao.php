@@ -18,7 +18,7 @@ class Paginacao {
     private $php_self;
     private $rows_per_page = 10; //Number of records to display per page
     private $total_rows = 0; //Total number of rows returned by the query
-    private $links_per_page = 10; //Number of links to display per page
+    private $links_per_page = 15; //Number of links to display per page
     private $append = ""; //Paremeters to append to pagination links
     private $sql = "";
     private $debug = false;
@@ -37,7 +37,7 @@ class Paginacao {
      * @param string $append Parameters to be appended to pagination links 
      */
      
-    function __construct($connection, $sql, $rows_per_page = 10, $links_per_page = 10, $append = "") {
+    function __construct($connection, $sql, $rows_per_page = 10, $links_per_page = 15, $append = "") {
         $this->conn = $connection;
         $this->sql = $sql;
         $this->rows_per_page = (int)$rows_per_page;

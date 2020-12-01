@@ -1,16 +1,16 @@
-<?php require_once('./header.php'); ?>
+<?php require_once('./cabecalho.php'); ?>
 
 <div class="container">
     <div class="row">
         <!-- Botão para adicionar novo registro-->
         <div class="col-md-3">
-            <a href="insert.php" class="btn btn-default">Novo Registro</a>
+            <a href="inserir.php" class="btn btn-default">Novo Registro</a>
         </div>
 
         <!-- Form de busca-->
         <div class="col-md-9">
-            <form action="search.php" method="get" >
-            <div class="pull-right" style="padding-left: 0;"  >
+            <form action="busca.php" method="get" >
+            <div class="pull-right"style="padding-left: 0;"  >
               <span class="pull-right">  
                 <label class="control-label" for="palavra" style="padding-right: 0;">
                   <input type="text" value="" placeholder="Nome ou parte" class="form-control" name="palavra">
@@ -25,12 +25,10 @@
 <br>
 
 <?php
-require_once './classes/connection.php';
-require_once './classes/crud.php';
-$crud = new Crud($db);
-require_once './classes/pagination.php';
+require_once './conexao.php';
+require_once './paginacao.php';
  
-$sql = "select * from $crud->table order by id";
+$sql = "select * from $table order by id desc";
  
 /*
     Parâmetros da Paginacao:
@@ -47,7 +45,7 @@ $sql = "select * from $crud->table order by id";
 */
 
 // Sintaxe da Paginacao($pdoection, $sql, $rows_per_page = 15, $links_per_page = 23, $append = "")
-$pager = new Paginacao($db, $sql, 10, 23, null);
+$pager = new Paginacao($pdo, $sql, 8, 23, null);
  
 // Classe de paginação renderiza os registros retornados
 $rs = $pager->paginate();
@@ -60,11 +58,12 @@ if($num >= 0 ){
 	print '<div class="container" align="center">';
     echo '<table class="table table-hover">';
     echo "<tr>";
+        $num_campos = num_campos();
         
-        for($x=0;$x<$crud->numFields();$x++){
-            $field = $crud->fieldName($x);
+        for($x=0;$x<$num_campos;$x++){
+            $campo = nome_campo($x);
 	?>
-	        <th><?=ucfirst($field)?></th>
+	        <th><?=ucfirst($campo)?></th>
 	<?php
         }
           // Mostrar os rótulos dos campos
@@ -74,18 +73,18 @@ if($num >= 0 ){
     // Loop através dos registros recebidos
     while ($row = $rs->fetch(PDO::FETCH_ASSOC)){
         echo "<tr>";
-            for($x=0;$x<$crud->numFields();$x++){
-                $field = $crud->fieldName($x);
+            for($x=0;$x<$num_campos;$x++){
+                $campo = nome_campo($x);
                 ?>
                 <!-- Mostrar os valores dos campos-->
-                <td><?=$row[$field]?></td>
+                <td><?=$row[$campo]?></td>
                 <?php
             }
-			?>
-            <td><a href="update.php?id=<?=$row['id']?>"><i class="glyphicon glyphicon-edit" title="Editar"></a></td>
-            <td><a onclick="return confirm('Tem certeza de que deseja excluir <?=$row['nome']?> ?')" href="delete_db.php?id=<?=$row['id']?>"><i class="glyphicon glyphicon-remove-circle" title="Excluir"></a></td></tr>
-		<?php
-    	echo "</tr>";
+?>
+            <td><a href="atualizar.php?id=<?=$row['id']?>"><i class="glyphicon glyphicon-edit" title="Editar"></a></td>
+            <td><a href="excluir.php?id=<?=$row['id']?>"><i class="glyphicon glyphicon-remove-circle" title="Excluir"></a></td></tr>
+<?php
+        echo "</tr>";
     }
     echo "</table>";
 }else{
@@ -93,12 +92,12 @@ if($num >= 0 ){
     echo "Nenhum registro encontrado!";
 }
  
-	// 'page-nav' CSS class é usada para controlar a aparência dos números de páginas da navegação
+// 'page-nav' CSS class é usada para controlar a aparência dos números de páginas da navegação
 	echo "<div class='page-nav' align='center'>";
     // Mostra nossa navegação de números
     echo $pager->renderFullNav();
 echo "</div>
 </div>";
 
-require_once('./footer.php');
+require_once('./rodape.php');
 ?>

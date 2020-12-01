@@ -9,10 +9,18 @@
     height: 60px;
     padding-top: 20px;
     position: relative;
-    background-color: #b79d9d;
+    background-color: #4a7a48;
     color: #fff;
     width: 100%;
     float: left;
+}
+
+.rodape a:visited{
+  color: white;
+}
+
+.rodape a:link{
+  color: yellow;
 }
 
 .page-nav{

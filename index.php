@@ -3,9 +3,9 @@
     <head>
         <title>Criador Automático de CRUDs</title>
  
-        <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
         <!-- Include custom CSS. -->
-        <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
  
     </head>
 <body>
@@ -14,10 +14,10 @@
     <!--
     This is where data will be shown.
     -->
-    <img src="./assets/imagnes/ajax-loader.gif" />
+    <img src="./imagnes/ajax-loader.gif" />
 </div>
 
-<script type = "text/javascript" src = "./assets/js/jquery.min.js"></script>
+<script type = "text/javascript" src = "./js/jquery.min.js"></script>
 <script type = "text/javascript">
 $(function(){
     // show the first page
@@ -26,10 +26,10 @@ $(function(){
  
 function getdata(pageno){
     // source of data
-    var targetURL = 'search_results.php?page=' + pageno;
+    var targetURL = 'busca_resultados.php?page=' + pageno;
  
     // show loading animation
-    $('#retrieved-data').html('<img src="./assets/imagens/ajax-loader.gif" />');
+    $('#retrieved-data').html('<img src="./imagens/ajax-loader.gif" />');
  
     // load to show new data
     $('#retrieved-data').load(targetURL).hide().fadeIn('slow');
