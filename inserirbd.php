@@ -24,8 +24,9 @@ if(isset($_POST['enviar'])){
 
     for($x=1;$x<$num_campos;$x++){
         $campo = nome_campo($x);
-		$sth->bindParam(":$campo", $_POST["$campo"], PDO::PARAM_INT);
+		$sth->bindParam(":$campo", $_POST["$campo"], PDO::PARAM_STR);
 	}
+
     $executa = $sth->execute();
 
     if($executa){
