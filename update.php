@@ -31,7 +31,7 @@ print '<h3 align="center">'.ucfirst($crud->table).'</h3>';
     $reg = $sth->fetch(PDO::FETCH_OBJ);
           
     for($x=0;$x<$crud->numFields();$x++){
-        $field = $crud-fieldName($x);
+        $field = $crud->fieldName($x);
 ?>
         <tr><td><b><?=ucfirst($field)?></td><td><input type="text" name="<?=$field?>" value="<?=$reg->$field?>"></td></tr>
 <?php
