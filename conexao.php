@@ -2,10 +2,10 @@
 $host = 'localhost';
 $db   = 'testes'; // Dica: auto-crud não foi aceito
 $user = 'root';
-$pass = '';
+$pass = 'root';
 $sgbd = 'mysql';      // Opções: pgsql ou mysql
 $port = 3306;
-$table = 'clientes';
+$table = '';
 
 // Conectar ao banco com PDO
 try {

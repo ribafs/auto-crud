@@ -1,3 +1,7 @@
+<?php
+require_once('./conexao.php');
+?>
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -9,7 +13,12 @@
  
     </head>
 <body>
-
+<?php
+if($table == ''){
+    print '<div class="container"><h1 class="text-center">Antes precisa configurar o banco e indicar a tabela em conexao.php</h1>';
+    exit;
+}
+?>
 <div id='retrieved-data' style='height:15em;'>
     <!--
     This is where data will be shown.
