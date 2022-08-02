@@ -1,10 +1,7 @@
-# Projeto abandonado
-
-Em favor do projeto ribafs/php-crud-generator, que continuará de onde este parou, corrigindo problemas e adicionando novos recursos.
-
-https://github.com/ribafs/php-crud-generator
-
 # Criador Automático de CRUDs
+
+## No-code
+Um termo atual para ferrametnas que eprmitem a criação de aplicativos sem digitar uma única linha de código. Este projeto basta que se crie um banco, com uma tabela e de preferência, com registros e indicar no arquivo conexao.php.
 
 #### Apenas indique o banco de dados e a tabela no conexao.php e ele cria seu CRUD com PDO, Bootstrap e Paginação, com suporte a MySQL e PostgreSQL garantidos e ainda outros via PDO.
 
@@ -12,8 +9,8 @@ https://github.com/ribafs/php-crud-generator
 Agora você pode apenas inserir o script.sql na pasta script e indicar no conexão que o auto-crud-pt irá criar o banco para ele e importar seu script
 
 ### Em dois Idiomas
-Português - https://github.com/ribafs/auto-crud-pt
 
+Português - https://github.com/ribafs/auto-crud-pt
 Inglês - https://github.com/ribafs/auto-crud-en
 
 ### Requisitos:
@@ -64,6 +61,12 @@ Para remover um registro apenas clique no link Excluir à direita do Editar e co
 ## Funcionamento
 
 Após configurar o banco e a tabela e chamar pelo navegador ele trata cada um dos campos da tabela de forma particular usando para isso informações de metadados do SGBD.
+
+## Projetos similares
+[https://github.com/ribafs/php-crud-generator](https://github.com/ribafs/crud-generator)
+[https://github.com/ribafs/auto-app](https://github.com/ribafs/auto-app)
+[https://github.com/ribafs/auto-crud-en](https://github.com/ribafs/auto-crud-en)
+Outros para laravel.
 
 ## Customizações
 
